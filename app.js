@@ -131,3 +131,53 @@ fetch('https://api.github.com/users/kinawy')
         console.log(sameh);
 
     })
+
+fetch('https://api.github.com/users/lizzwest')
+    .then(response => {
+        return response.json();
+    })
+    .then(data => { // Using dot notation
+        const lizz = new GitHubProfile(data.type, data.login, data.url);
+        lizz.intro()
+    })
+
+    // Promises
+
+
+ 
+
+// Promise
+// var willIGetNewPhone = new Promise(
+//     function (resolve, reject) {
+//         if (isMomHappy) {
+//             var phone = {
+//                 brand: 'Samsung',
+//                 color: 'black'
+//             };
+//             resolve(phone); // fulfilled
+//         } else {
+//             var reason = new Error('mom is not happy');
+//             reject(reason); // reject
+//         }
+
+//     }
+// );
+
+var isMomHappy = true;
+
+let willIGetNewPhone = new Promise((resolve, reject) => {
+    if (isMomHappy) {
+        const phone = {
+            brand: 'iPhone',
+            color: 'red'
+        }
+        resolve(phone);
+    }
+    else {
+        reject('No phone');
+    }
+})
+
+willIGetNewPhone.then(result => {
+    console.log(result)
+})
